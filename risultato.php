@@ -1,6 +1,7 @@
 <?php
-// Leggiamo la password dal parametro GET
-$password = isset($_GET['password']) ? $_GET['password'] : '';
+session_start();
+
+$password = isset($_SESSION['password']) ? $_SESSION['password'] : '';
 ?>
 
 <!DOCTYPE html>

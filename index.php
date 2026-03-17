@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once "./functions.php";
 
 $error = null;
@@ -17,8 +18,9 @@ if (isset($_GET['pass'])) {
         $error = "Seleziona almeno un tipo di carattere";
     } else {
         $passwordGenerata = generapassword($pass,  $lowercase, $uppercase, $numbers, $symbols);
-        header("Location: risultato.php?password=" . urlencode($passwordGenerata));
-        exit; // fermiamo l'esecuzione dopo il redirect
+        $_SESSION['password'] = $passwordGenerata; // salvo nella sessione
+        header("Location: risultato.php"); // redirect 
+        exit;
     }
 }
 
@@ -115,7 +117,7 @@ $pass = isset($_GET['pass']) ? intval($_GET['pass']) : null;
         if (alertEl) {
             setTimeout(() => {
                 alertEl.style.display = 'none';
-            }, 3000); // 5000ms = 5 secondi
+            }, 3000); 
         } //vado a utilizzare js cosi da rimuovere l'alert dopo qualche secondo
     </script>
 </body>
