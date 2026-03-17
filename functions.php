@@ -8,18 +8,10 @@ function generapassword($pass = 12)
 
     $tutti = $minuscole . $maiuscole . $numeri . $simboli;
 
-
     $password = '';
     for ($i = 0; $i < $pass; $i++) {
         $posizione = random_int(0, strlen($tutti) - 1);
         $password .= $tutti[$posizione];
     }
     return $password;
-}
-
-$pass = isset($_GET["pass"]) ? intval($_GET['pass']) : 12;
-$passwordGenerata = '';
-
-if ($pass > 0) {
-    $passwordGenerata = generapassword($pass);
 }
